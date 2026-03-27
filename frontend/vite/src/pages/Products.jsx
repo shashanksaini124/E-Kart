@@ -185,7 +185,7 @@
 
 
 import React, { useState, useEffect } from "react";
-import FilterSidebar from "@/components/ui/FilterSideBar";
+import FilterSidebar from "@/components/ui/FilterSidebar";
 import axios from "axios";
 import { toast } from "sonner";
 import { Input } from "@/components/ui/input";
