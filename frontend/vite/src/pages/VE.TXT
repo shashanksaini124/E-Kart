@@ -10,7 +10,7 @@ const VerifyEmail = () => {
 
   const verifyEmail = async () => {
     try {
-      const response = await axios.get(`http://localhost:3000/api/v1/user/verify`,{
+      const response = await axios.get(`,{
         headers: {
           "Authorization": `Bearer ${token}`,
         },
@@ -64,7 +64,7 @@ const VerifyEmail = () => {
   const verifyEmail = async () => {
     try {
       const response = await axios.get(
-        `http://localhost:3000/api/v1/user/verify/${token}`
+        `
       );
 
       if (response.data.success) {

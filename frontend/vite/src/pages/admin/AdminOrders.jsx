@@ -10,7 +10,7 @@
 //   useEffect(() => {
 //     const fetchOrders = async () => {
 //       try {
-//         const { data } = await axios.get("http://localhost:3000/api/v1/orders/all", {
+//         const { data } = await axios.get(l", {
 //           headers: {
 //             Authorization: `Bearer ${accessToken}`
 //           }

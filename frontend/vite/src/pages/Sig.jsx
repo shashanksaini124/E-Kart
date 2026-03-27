@@ -164,7 +164,7 @@ const Sig = () => {
           <div className="w-full md:w-1/2">
             {/* Image */}
             <img
-              src='gallery16.jpg'
+              src='/gallery16.jpg'
               className="w-full h-full object-cover"
               alt="banner image"
             />

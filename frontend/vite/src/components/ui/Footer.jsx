@@ -9,9 +9,7 @@ const Footer = () => {
       <div className="max-w-7xl mx-auto px-4 md:flex md:justify-between">
         {/*info */}
         <div className="mb-6 md:mb-0">
-            <Link to={'/'} >
-                <img src="/av.png" alt="" className='w-22'/>
-            </Link>
+            
             <p className="mt-2 text-sm"> Powering your world with the best in electronics</p>
             <p className="mt-2 text-sm"> Omega Electronics, BhajanPura,New Delhi</p>
             <p className=" text-sm"> Email: abhinaysaini21bara@mail.com</p>

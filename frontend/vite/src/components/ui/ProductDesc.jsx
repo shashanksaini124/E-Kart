@@ -24,7 +24,7 @@ const ProductDesc = ({ product }) => {
   //   }
   //   try {
   //     const res = await axios.post(
-  //       "http://localhost:3000/api/v1/cart/add",
+  //      
   //       { productId, selectedColor: selectedColor },
 
   //       {
