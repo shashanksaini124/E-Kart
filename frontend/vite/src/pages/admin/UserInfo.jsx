@@ -69,7 +69,7 @@ const UserInfo = () => {
       }
 
       const res = await fetch(
-        `http://localhost:3000/api/v1/user/update/${userId}`,
+        `${import.meta.env.VITE_URL}/api/v1/user/update/${userId}`,
         {
           method: "PUT",
           headers: {
@@ -108,7 +108,7 @@ const UserInfo = () => {
   const getUserDetails = async () => {
     try {
       const res = await axios.get(
-        `http://localhost:3000/api/v1/user/get-user/${userId}`,
+        `${import.meta.env.VITE_URL}/api/v1/user/get-user/${userId}`,
       );
       if (res.data.success) {
         setUpdateUser({

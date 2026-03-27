@@ -30,7 +30,7 @@ const Lo = () => {
     try {
       setLoading(true);
       const response = await axios.post(
-        "http://localhost:3000/api/v1/user/login",
+        `${import.meta.env.VITE_URL}/api/v1/user/login`,
         formData,
         {
           headers: {
@@ -74,7 +74,7 @@ const Lo = () => {
             {/* Brand Name */}
             <div className="mb-10">
               <h1 className="inline-block px-6 py-3 rounded-full border-2 border-gray-800 font-bold text-xl">
-                Harvi
+                H A R V I
               </h1>
             </div>
 
@@ -151,7 +151,7 @@ const Lo = () => {
           <div className="w-full md:w-1/2">
             {/* Image */}
             <img
-              src="img1.avif"
+              src="gallery16.jpg"
               className="w-full h-full object-cover"
               alt="banner image"
             />

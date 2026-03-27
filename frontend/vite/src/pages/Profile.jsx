@@ -100,7 +100,7 @@ const Profile = () => {
       const id = user?._id; // ✅ safest
 
       const res = await axios.put(
-        `http://localhost:3000/api/v1/user/update/${id}`,
+        `${import.meta.env.VITE_URL}/api/v1/user/update/${id}`,
         formData,
         {
           headers: {

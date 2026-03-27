@@ -91,7 +91,7 @@ Object.entries(editProduct).forEach(([key, value]) => {
 
     try {
       const res = await axios.put(
-        `http://localhost:3000/api/v1/product/update/${editProduct._id}`,
+         `${import.meta.env.VITE_URL}/product/update/${editProduct._id}`,
         formData,
         {
           headers: { Authorization: `Bearer ${accessToken}` },
@@ -118,7 +118,7 @@ Object.entries(editProduct).forEach(([key, value]) => {
   const deleteProductHandler = async (id) => {
     try {
       const res = await axios.delete(
-        `http://localhost:3000/api/v1/product/delete/${id}`,
+        `${import.meta.env.VITE_URL}/api/v1/product/delete/${id}`,
         { headers: { Authorization: `Bearer ${accessToken}` } },
       );
 

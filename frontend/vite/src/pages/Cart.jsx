@@ -22,7 +22,7 @@ const Cart = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const API = "http://localhost:3000/api/v1/cart";
+  const API = `${import.meta.env.VITE_URL}/api/v1/cart`;
   const accessToken = localStorage.getItem("accessToken");
 
   // ✅ UPDATE QUANTITY

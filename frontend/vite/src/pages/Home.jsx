@@ -259,7 +259,7 @@ const Home = () => {
     const getProducts = async () => {
       try {
         const res = await axios.get(
-          "http://localhost:3000/api/v1/product/getallproducts"
+          `${import.meta.env.VITE_URL}/api/v1/product/getallproducts`
         );
         setProducts(res.data.products || []);
       } catch (error) {

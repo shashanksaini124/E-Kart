@@ -15,7 +15,7 @@ const Footer = () => {
             <p className="mt-2 text-sm"> Powering your world with the best in electronics</p>
             <p className="mt-2 text-sm"> Omega Electronics, BhajanPura,New Delhi</p>
             <p className=" text-sm"> Email: abhinaysaini21bara@mail.com</p>
-            <p className=" text-sm"> Phone: 9643048450</p>
+            <p className=" text-sm"> Phone: +91 96430-48450</p>
         </div>
         {/*custromer service links */}
         <div className="mb-6 md:mb-0">
@@ -32,13 +32,13 @@ const Footer = () => {
         <div className="mb-6 md:mb-0">
             <h3 className="text-xl font-semibold">Follow us</h3>
             <div className="flex space-x-4 mt-2">
-                <a href="https://facebook.com/">
+                <a href="https://www.facebook.com/abhinay.saini.35/">
                 <FaFacebook className='hover:scale-145 cursor-pointer hover:text-blue-500'/>
                 </a>
                 <a href="https://instagram.com/omega_marketing1/">
                 <FaInstagram className='hover:scale-145 cursor-pointer hover:text-pink-400'/>
                 </a>
-                <a href="https://web.whatsapp.com/">
+                <a href="https://wa.me/919643048450/">
                 <FaWhatsapp className='hover:scale-145 cursor-pointer hover:text-green-400'/>
                 </a>
             </div>

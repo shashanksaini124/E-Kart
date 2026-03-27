@@ -47,74 +47,7 @@ const AdminDashboard = () => {
   }, []);
 
   return (
-    // <div className="min-h-screen bg-gray-100 p-8 py-27 pl-[320px]">
-    //   {/* ===== Stats Cards ===== */}
-    //   <div className="grid gap-6 lg:grid-cols-4 mb-8">
-    //     <Card className="bg-pink-500 text-white shadow-xl">
-    //       <CardHeader>
-    //         <CardTitle>Total Users</CardTitle>
-    //       </CardHeader>
-    //       <CardContent className="text-3xl font-bold">
-    //         {stats.totalUsers}
-    //       </CardContent>
-    //     </Card>
-    //     <Card className="bg-purple-500 text-white shadow-xl">
-    //       <CardHeader>
-    //         <CardTitle>Total Products</CardTitle>
-    //       </CardHeader>
-    //       <CardContent className="text-3xl font-bold">
-    //         {stats.totalProducts}
-    //       </CardContent>
-    //     </Card>
-    //     <Card className="bg-blue-500 text-white shadow-xl">
-    //       <CardHeader>
-    //         <CardTitle>Total Orders</CardTitle>
-    //       </CardHeader>
-    //       <CardContent className="text-3xl font-bold">
-    //         {stats.totalOrders}
-    //       </CardContent>
-    //     </Card>
-    //     <Card className="bg-green-500 text-white shadow-xl">
-    //       <CardHeader>
-    //         <CardTitle>Total Revenue</CardTitle>
-    //       </CardHeader>
-    //       <CardContent className="text-3xl font-bold">
-    //         ₹ {stats.totalSales}
-    //       </CardContent>
-    //     </Card>
-    //   </div>
-    //   {/* ===== Sales Chart ===== */}
-    //   <Card className="shadow-xl">
-    //     <CardHeader>
-    //       <CardTitle>Sales (Last 30 Days)</CardTitle>
-    //     </CardHeader>
-    //     <CardContent className="h-[350px] w-full">
-    //       <ResponsiveContainer width="100%" height="100%">
-    //         <AreaChart data={stats.sales || []}>
-    //           <defs>
-    //             <linearGradient id="colorSales" x1="0" y1="0" x2="0" y2="1">
-    //               <stop offset="5%" stopColor="#ec4899" stopOpacity={0.8} />
-    //               <stop offset="95%" stopColor="#ec4899" stopOpacity={0.1} />
-    //             </linearGradient>
-    //           </defs>
-
-    //           <CartesianGrid strokeDasharray="3 3" />
-    //           <XAxis dataKey="date" />
-    //           <YAxis domain={[0, "auto"]} />
-    //           <Tooltip />
-
-    //           <Area
-    //             type="monotone"
-    //             dataKey="amount"
-    //             stroke="#ec4899"
-    //             fillOpacity={1}
-    //             fill="url(#colorSales)"
-    //           />
-    //         </AreaChart>
-    //       </ResponsiveContainer>
-    //     </CardContent>
-    //   </Card>
-    // </div>
+    
     <div
       className="min-h-screen bg-gradient-to-tr from-yellow-300 via-pink-200 to-yellow-500 
   px-3 sm:px-6 lg:px-8 
