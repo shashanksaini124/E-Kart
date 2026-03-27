@@ -76,7 +76,7 @@ const Navbar = () => {
           className="w-[55px] cursor-pointer"
         />
 
-        <h1 className="text-5xl pl-10 font-sans">
+        <h1 className="text-5xl  font-sans">
           {/* <b>卄ⲗŕ𝑣𝔦</b> */}
           <b>H A R V I</b>
         </h1>

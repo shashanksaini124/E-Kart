@@ -1,38 +1,45 @@
-require("dotenv").config()
-// importation
-const express = require('express')
-const app = express()
+require("dotenv").config();
+
+const express = require("express");
+const app = express();
 const connectDB = require("./database/db.js");
-const userRoute = require("./routes/userRoute.js")
-const cors = require("cors")
-const cartRoute = require("./routes/cartRoute.js")
-const orderRoute = require("./routes/orderRoute.js")
-const productRoute = require("./routes/productRoute.js")
 
+const userRoute = require("./routes/userRoute.js");
+const cartRoute = require("./routes/cartRoute.js");
+const orderRoute = require("./routes/orderRoute.js");
+const productRoute = require("./routes/productRoute.js");
+
+const cors = require("cors");
+
+// ✅ PORT FIX
+const PORT = process.env.PORT || 8000;
+
+// ✅ CORS FIX (temporary + production ready)
 app.use(cors({
-    origin: 'http://localhost:5173',
-    credentials: true
-}))
+  origin: process.env.FRONTEND_URL || "*",
+  credentials: true
+}));
 
-// port
-PORT = process.env.PORT || 8000;
+// ✅ MIDDLEWARE
+app.use(express.json());
 
-// middleware
-app.use(express.json())
+// ✅ ROUTES
+app.get("/", (req, res) => {
+  res.send("API is running 🚀");
+});
 
-// routes
-app.get("/",(req,res)=>{        // 1
-    res.send("hey")  
-})
+app.use("/api/v1/user", userRoute);
+app.use("/api/v1/product", productRoute);
+app.use("/api/v1/cart", cartRoute);
+app.use("/api/v1/orders", orderRoute);
 
-//api
-app.use("/api/v1/user",userRoute)       // 2
-app.use("/api/v1/product",productRoute)                                        // 3
- app.use("/api/v1/cart",cartRoute)       // 3
- app.use("/api/v1/orders",orderRoute)       // 3
-
-app.listen(PORT,()=>{
-    connectDB()
-    console.log(`server is running on port: ${PORT}`);
-    
-})
+// ✅ CONNECT DB + START SERVER
+connectDB()
+  .then(() => {
+    app.listen(PORT, () => {
+      console.log(`Server running on port: ${PORT}`);
+    });
+  })
+  .catch((err) => {
+    console.log("DB connection failed ❌", err);
+  });
