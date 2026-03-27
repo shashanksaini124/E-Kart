@@ -284,6 +284,7 @@ const Home = () => {
     const elements = document.querySelectorAll(".fade-up");
 
     elements.forEach((el) => el.classList.add("init"));
+    console.log("API URL:", import.meta.env.VITE_URL);
 
     const observer = new IntersectionObserver(
       (entries) => {
@@ -346,7 +347,7 @@ const Home = () => {
             />
           ))}
         </div>
-
+          
         {/* ARROWS */}
         <button
           onClick={prevSlide}
