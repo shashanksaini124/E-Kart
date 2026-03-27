@@ -18,7 +18,8 @@ const Home = () => {
     const getProducts = async () => {
       try {
         const res = await axios.get(
-          `${import.meta.env.VITE_URL}/api/v1/product/getallproducts`
+          `${import.meta.env.VITE_URL}/api/v1/product/getallproducts`,
+          console.log(import.meta.env.VITE_URL)
         );
         setProducts(res.data.products || []);
       } catch (error) {

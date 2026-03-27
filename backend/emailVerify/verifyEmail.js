@@ -23,7 +23,7 @@ You recently registered on our website.
 
 Please click the link below to verify your email:
 
-http://localhost:5173/verify/${token}
+process.env/verify/${token}
 
 Thanks,
 E-Kart Team`,
