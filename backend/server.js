@@ -16,7 +16,11 @@ const PORT = process.env.PORT || 8000;
 
 // ✅ CORS FIX (temporary + production ready)
 app.use(cors({
+<<<<<<< HEAD
   origin:  "https://harvi-six.vercel.app",
+=======
+  origin: "https://harvi-six.vercel.app",
+>>>>>>> ce28ebe (cors updation)
   credentials: true
 }));
 
