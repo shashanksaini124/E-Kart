@@ -186,7 +186,7 @@ const Products = () => {
           </div>
 
           {/* PRODUCTS GRID */}
-          <div className="fade-up grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-7">
+          <div className="fade-up grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-5">
             {products.map((product, index) => (
               <div
                 key={product._id}

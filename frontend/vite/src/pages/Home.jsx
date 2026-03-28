@@ -88,7 +88,7 @@ const Home = () => {
   };
 
   return (
-    <div className="bg-gradient-to-b via-gray-100 to-yellow-100 p-10 min-h-screen pt-[110px]">
+    <div className="bg-gradient-to-b via-gray-100 to-yellow-100 p-7 min-h-screen pt-[110px]">
       
       {/* 🔥 SLIDER */}
       <div className="fade-up relative w-full max-w-7xl h-[220px] sm:h-[320px] md:h-[400px] lg:h-[500px] mx-auto rounded-xl overflow-hidden">

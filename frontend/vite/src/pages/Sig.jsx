@@ -26,31 +26,30 @@ const Sig = () => {
   };
 
   const navigate = useNavigate();
+const SubmitHandler = async (e) => {
+  e.preventDefault();
 
-  const SubmitHandler = async (e) => {
-    e.preventDefault();
-    console.log(formData);
-    try {
-      setLoading(true);
-      const response = await axios.post(
-        `${import.meta.env.VITE_URL}/api/v1/user/register`,
-        formData,
-        {
-          headers: {
-            "Content-Type": "application/json",
-          },
-        },
-      );
-      if (response.data.success) {
-        navigate("/verify");
-        toast.success(response.data.message);
-      }
-    } catch (error) {
-      console.log(error);
-      toast.error(error.response.data.message || "Something went wrong");
-    } finally {
-      setLoading(false);
+  try {
+    setLoading(true);
+
+    const response = await axios.post(
+      `${import.meta.env.VITE_URL}/api/v1/user/register`,
+      formData
+    );
+
+    if (response.data.success) {
+      toast.success("OTP sent to email");
+
+      // ✅ pass email to verify page
+      navigate("/verify", { state: { email: formData.email } });
     }
+  } catch (error) {
+    console.log(error);
+    toast.error(error.response?.data?.message || "Something went wrong");
+  } finally {
+    setLoading(false);
+  }
+
   };
   return (
     <div className="min-h-screen flex items-center justify-center p-4">

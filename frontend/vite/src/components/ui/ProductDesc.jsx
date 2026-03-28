@@ -53,6 +53,12 @@ const ProductDesc = ({ product }) => {
     toast.error("Please select color and size");
     return;
   }
+    // ✅ 1. CHECK LOGIN FIRST
+  if (!accessToken) {
+    toast.error("Please login first");
+    navigate("/login");   // 🔥 redirect here
+    return;
+  }
 
   try {
     const res = await axios.post(
@@ -73,9 +79,15 @@ const ProductDesc = ({ product }) => {
       toast.success("Product added to cart");
       setShowPopup(true);
       dispatch(setCart(res.data.cart));
+
     }
   } catch (error) {
     console.log(error);
+
+      if (error.response?.status === 401) {
+      toast.error("Session expired, login again");
+      navigate("/login");
+    }
   }
 };
   return (
