@@ -88,7 +88,7 @@ const Home = () => {
   };
 
   return (
-    <div className="bg-gradient-to-b via-gray-100 to-yellow-100 p-7 min-h-screen pt-[110px]">
+    <div className="bg-gradient-to-b via-gray-100 to-yellow-100 p-3 min-h-screen pt-[110px]">
       
       {/* 🔥 SLIDER */}
       <div className="fade-up relative w-full max-w-7xl h-[220px] sm:h-[320px] md:h-[400px] lg:h-[500px] mx-auto rounded-xl overflow-hidden">
@@ -148,12 +148,12 @@ const Home = () => {
               <div
                 key={product._id}
                 onClick={() => navigate(`/products/${product._id}`)}
-                className="fade-up bg-white rounded-xl p-3 shadow hover:shadow-lg transition flex flex-col items-center cursor-pointer group"
+                className="fade-up bg-white rounded-xl p-3   shadow hover:shadow-lg transition flex flex-col items-center cursor-pointer group"
               >
-                <div className="overflow-hidden rounded-lg">
+                <div className="overflow-hidden  rounded-lg">
                   <img
                     src={product.productImg?.[0]?.url}
-                    className="w-full h-32 sm:h-40 object-cover group-hover:scale-105 transition"
+                    className="w-full h-52 sm:h-60 object-cover group-hover:scale-105 transition"
                     alt={product.productName}
                   />
                 </div>

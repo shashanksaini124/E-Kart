@@ -15,7 +15,7 @@ const cors = require("cors");
 const PORT = process.env.PORT || 8000;
 
 app.use(cors({
-  origin: "https://harvi-six.vercel.app",
+  origin: "http://localhost:5173",
   credentials: true
 }));
 
@@ -28,6 +28,7 @@ app.get("/", (req, res) => {
 });
 
 app.use("/api/v1/user", userRoute);
+console.log("User route working...");
 app.use("/api/v1/product", productRoute);
 app.use("/api/v1/cart", cartRoute);
 app.use("/api/v1/orders", orderRoute);

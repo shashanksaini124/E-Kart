@@ -281,7 +281,7 @@ Object.entries(editProduct).forEach(([key, value]) => {
               <p className="font-semibold mb-2">Edit Colors:</p>
 
               <div className="flex gap-2 flex-wrap">
-                {["red", "blue", "black", "green", "yellow", "purple"].map(
+                {["red", "blue", "black", "green", "yellow", "purple","pink"].map(
                   (color) => (
                     <button
                       key={color}

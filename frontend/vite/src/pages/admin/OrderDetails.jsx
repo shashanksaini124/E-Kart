@@ -99,7 +99,7 @@ const OrderDetails = () => {
         </div>
 
         {/* 📍 ADDRESS */}
-        <div className="bg-white p-4 rounded shadow">
+        {/* <div className="bg-white p-4 rounded shadow">
           <h2 className="font-semibold mb-2">Shipping Address</h2>
           <p>
             <strong>Address:</strong> {order.user?.address || "N/A"}
@@ -110,7 +110,49 @@ const OrderDetails = () => {
           <p>
             <strong>Pincode:</strong> {order.user?.zipCode || "N/A"}
           </p>
-        </div>
+        </div> */}
+
+       <div className="bg-white p-4 rounded shadow">
+  <h2 className="font-semibold mb-2">Shipping Address</h2>
+
+  {order.shippingAddress ? (
+    <>
+      <p>
+        <strong>Name:</strong> {order.shippingAddress.fullName}
+      </p>
+
+      <p>
+        <strong>Phone:</strong> {order.shippingAddress.phone}
+      </p>
+
+      <p>
+        <strong>Email:</strong> {order.shippingAddress.email}
+      </p>
+
+      <p>
+        <strong>Address:</strong> {order.shippingAddress.address}
+      </p>
+
+      <p>
+        <strong>City:</strong> {order.shippingAddress.city}
+      </p>
+
+      <p>
+        <strong>State:</strong> {order.shippingAddress.state}
+      </p>
+
+      <p>
+        <strong>Pincode:</strong> {order.shippingAddress.zip}
+      </p>
+
+      <p>
+        <strong>Country:</strong> {order.shippingAddress.country}
+      </p>
+    </>
+  ) : (
+    <p className="text-red-500">No shipping address found</p>
+  )}
+</div>
 
         {/* 🛍️ PRODUCTS */}
         <div className="bg-white p-4 rounded shadow">

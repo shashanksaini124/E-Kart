@@ -135,6 +135,7 @@ const reVerifyUser = async (req, res) => {
 // Login user
 
 const login = async (req, res) => {
+  
   try {
     const{ email,password} = req.body;
     if (!email || !password){
@@ -154,7 +155,7 @@ const login = async (req, res) => {
     if(!isPasswordValid){
       return res.status(400).json({
         success: false,
-        message: "Invalid password",
+        message: "Wrong password",
       })
     }
     if(existingUser.isVerified === false){

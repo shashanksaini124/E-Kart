@@ -50,7 +50,7 @@ const FilterSidebar = ({
     setPriceRange([0, 999999]);
   };
   return (
-    <div className="bg-gray-100 mt-10 p-4 rounded-md h-max hidden md:block w-64">
+    <div className="bg-gray-100 p-4 rounded-md h-max w-full md:w-64 overflow-y-auto">
       {/* Search */}
       <Input
         type="text"

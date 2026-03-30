@@ -8,22 +8,91 @@ const razorpayInstance = new Razorpay({
   key_id: process.env.RAZORPAY_KEY_ID,
   key_secret: process.env.RAZORPAY_SECRET,
 });
+// const createOrder = async (req, res) => {
+//   try {
+//     const { products, amount, tax, shipping, currency } = req.body;
+
+//     const options = {
+//       amount: Math.round(Number(amount) * 100),
+//       currency: currency || "INR",
+//       receipt: `receipt_${Date.now()}`,
+//     };
+
+//     const razorpayOrder = await razorpayInstance.orders.create(options);
+
+//     const newOrder = new orderModel({
+//       user: req.user._id,
+
+//       // ✅ FIXED HERE
+//       products: products.map((item) => ({
+//         productId: item.productId,
+//         quantity: item.quantity,
+//         color: item.color || "N/A",
+//         size: item.size || "N/A",
+//       })),
+
+//       amount,
+//       tax,
+//       shipping,
+//       currency,
+//       status: "Pending",
+//       razorpayOrderId: razorpayOrder.id,
+//     });
+
+//     await newOrder.save();
+//     console.log("REQ PRODUCTS:", products);
+
+//     res.json({
+//       success: true,
+//       order: razorpayOrder,
+//       dbOrder: newOrder,
+//     });
+//   } catch (error) {
+//     console.error("❌ Error in create Order:", error);
+//     res.status(500).json({
+//       success: false,
+//       message: error.message,
+//     });
+//   }
+// };
+
 const createOrder = async (req, res) => {
   try {
-    const { products, amount, tax, shipping, currency } = req.body;
+    const {
+      products,
+      amount,
+      tax,
+      shipping,
+      currency,
+      paymentMethod,
+      shippingAddress, // ✅ NEW
+    } = req.body;
 
-    const options = {
-      amount: Math.round(Number(amount) * 100),
-      currency: currency || "INR",
-      receipt: `receipt_${Date.now()}`,
-    };
+    // 🛑 Validation (important)
+    if (!shippingAddress) {
+      return res.status(400).json({
+        success: false,
+        message: "Shipping address is required",
+      });
+    }
 
-    const razorpayOrder = await razorpayInstance.orders.create(options);
+    // 💳 Razorpay order (only for ONLINE)
+    let razorpayOrder = null;
 
+    if (paymentMethod !== "COD") {
+      const options = {
+        amount: Math.round(Number(amount) * 100),
+        currency: currency || "INR",
+        receipt: `receipt_${Date.now()}`,
+      };
+
+      razorpayOrder = await razorpayInstance.orders.create(options);
+    }
+
+    // 🧾 Save order in DB
     const newOrder = new orderModel({
       user: req.user._id,
 
-      // ✅ FIXED HERE
       products: products.map((item) => ({
         productId: item.productId,
         quantity: item.quantity,
@@ -35,18 +104,36 @@ const createOrder = async (req, res) => {
       tax,
       shipping,
       currency,
-      status: "Pending",
-      razorpayOrderId: razorpayOrder.id,
+      paymentMethod: paymentMethod || "ONLINE",
+
+      // ✅ MAIN FIX
+      shippingAddress: {
+        fullName: shippingAddress.fullName,
+        phone: shippingAddress.phone,
+        email: shippingAddress.email,
+        address: shippingAddress.address,
+        city: shippingAddress.city,
+        state: shippingAddress.state,
+        zip: shippingAddress.zip,
+        country: shippingAddress.country,
+      },
+
+      status: paymentMethod === "COD" ? "Confirmed" : "Pending",
+
+      // ✅ Only for ONLINE
+      razorpayOrderId: razorpayOrder ? razorpayOrder.id : null,
     });
 
     await newOrder.save();
-    console.log("REQ PRODUCTS:", products);
+
+    console.log("✅ Order Created:", newOrder);
 
     res.json({
       success: true,
-      order: razorpayOrder,
-      dbOrder: newOrder,
+      order: razorpayOrder, // for Razorpay
+      dbOrder: newOrder,    // your DB order
     });
+
   } catch (error) {
     console.error("❌ Error in create Order:", error);
     res.status(500).json({
@@ -55,7 +142,6 @@ const createOrder = async (req, res) => {
     });
   }
 };
-
 const verifyPayment = async (req, res) => {
   try {
     const {
