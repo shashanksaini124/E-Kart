@@ -15,7 +15,7 @@ const cors = require("cors");
 const PORT = process.env.PORT || 8000;
 
 app.use(cors({
-  origin: "https://harvi-six.vercel.app/",
+  origin: "https://ecom-liard-tau.vercel.app/",
   credentials: true
 }));
 
