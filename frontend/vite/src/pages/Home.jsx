@@ -176,8 +176,8 @@ const Home = () => {
         </div>
 
         {/* 🔥 GALLERY */}
-        <div className="mt-12">
-          <h2 className="fade-up text-lg sm:text-2xl font-bold mb-6">
+        <div className="mt-12" onClick={() => navigate("/products")}>
+          <h2 className="fade-up text-lg sm:text-2xl font-bold mb-6"  >
             Explore More
           </h2>
 

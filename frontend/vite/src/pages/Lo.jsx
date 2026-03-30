@@ -177,7 +177,7 @@ const Lo = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const API_URL = import.meta.env.VITE_URL || "http://localhost:5000";
+  const API_URL = import.meta.env.VITE_URL ;
 
   const handleChange = (e) => {
     setFormData({

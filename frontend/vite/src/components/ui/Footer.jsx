@@ -10,10 +10,10 @@ const Footer = () => {
         {/*info */}
         <div className="mb-6 md:mb-0">
             
-            <p className="mt-2 text-sm"> Powering your world with the best in electronics</p>
-            <p className="mt-2 text-sm"> Omega Electronics, BhajanPura,New Delhi</p>
-            <p className=" text-sm"> Email: abhinaysaini21bara@mail.com</p>
-            <p className=" text-sm"> Phone: +91 96430-48450</p>
+            <p className="mt-2 text-sm"> Design your world with the best in fashion</p>
+            <p className="mt-2 text-sm"> Harvi_international, YamunaVihar,New Delhi</p>
+            <p className=" text-sm"> Email: ayyushiaggarwal7@gmail.com</p>
+            <p className=" text-sm"> Phone: +91 96430-81041</p>
         </div>
         {/*custromer service links */}
         <div className="mb-6 md:mb-0">
@@ -33,10 +33,10 @@ const Footer = () => {
                 <a href="https://www.facebook.com/abhinay.saini.35/">
                 <FaFacebook className='hover:scale-145 cursor-pointer hover:text-blue-500'/>
                 </a>
-                <a href="https://instagram.com/omega_marketing1/">
+                <a href="https://instagram.com/harvi_international1/">
                 <FaInstagram className='hover:scale-145 cursor-pointer hover:text-pink-400'/>
                 </a>
-                <a href="https://wa.me/919643048450/">
+                <a href="https://wa.me/919643081041/">
                 <FaWhatsapp className='hover:scale-145 cursor-pointer hover:text-green-400'/>
                 </a>
             </div>
@@ -54,7 +54,7 @@ const Footer = () => {
         </div>
       </div>
         <div className="mt-8 text-center text-sm border-t border-gray-700 pt-6">
-            <p>&copy; {new Date().getFullYear()} <span className="text-green-600"> EKart</span> .Omega Electronics. All rights reserved.</p>
+            <p>&copy; {new Date().getFullYear()} <span className="text-green-600"> EKart</span> .Harvi_international. All rights reserved.</p>
         </div>
     </footer>
   )
