@@ -2,9 +2,10 @@ const nodemailer = require("nodemailer");
 require("dotenv").config();
 
 const verifyEmail = async (token, email) => {
-  try {
-    console.log("MAIL_USER:", process.env.MAIL_USER);
+  console.log("MAIL_USER:", process.env.MAIL_USER);
 console.log("MAIL_PASS:", process.env.MAIL_PASS);
+  try {
+    
 
 
 
