@@ -12,7 +12,7 @@ const Footer = () => {
             
             <p className="mt-2 text-sm"> Design your world with the best in fashion</p>
             <p className="mt-2 text-sm"> Harvi_international, YamunaVihar,New Delhi</p>
-            <p className=" text-sm"> Email: ayyushiaggarwal7@gmail.com</p>
+            <p className=" text-sm"> Email: harviinternational7@gmail.com</p>
             <p className=" text-sm"> Phone: +91 96430-81041</p>
         </div>
         {/*custromer service links */}

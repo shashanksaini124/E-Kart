@@ -7,6 +7,7 @@ import { Eye, EyeOff } from "lucide-react";
 import { toast } from "sonner";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import { Loader2 } from "lucide-react";
 
 const Sig = () => {
   const [showpassword, setShowPassword] = useState(false);
@@ -26,30 +27,29 @@ const Sig = () => {
   };
 
   const navigate = useNavigate();
-const SubmitHandler = async (e) => {
-  e.preventDefault();
+  const SubmitHandler = async (e) => {
+    e.preventDefault();
 
-  try {
-    setLoading(true);
+    try {
+      setLoading(true);
 
-    const response = await axios.post(
-      `${import.meta.env.VITE_URL}/api/v1/user/register`,
-      formData
-    );
+      const response = await axios.post(
+        `${import.meta.env.VITE_URL}/api/v1/user/register`,
+        formData,
+      );
 
-    if (response.data.success) {
-      toast.success("OTP sent to email");
+      if (response.data.success) {
+        toast.success("OTP sent to email");
 
-      // ✅ pass email to verify page
-      navigate("/verify", { state: { email: formData.email } });
+        // ✅ pass email to verify page
+        navigate("/verify", { state: { email: formData.email } });
+      }
+    } catch (error) {
+      console.log(error);
+      toast.error(error.response?.data?.message || "Something went wrong");
+    } finally {
+      setLoading(false);
     }
-  } catch (error) {
-    console.log(error);
-    toast.error(error.response?.data?.message || "Something went wrong");
-  } finally {
-    setLoading(false);
-  }
-
   };
   return (
     <div className="min-h-screen flex items-center justify-center p-4">
@@ -135,9 +135,22 @@ const SubmitHandler = async (e) => {
                 <button
                   type="submit"
                   onClick={SubmitHandler}
-                  className="w-full bg-yellow-400 hover:bg-yellow-500 rounded-full py-3 text-gray-900 font-semibold cursor-pointer transition-all duration-300 hover:scale-[1.02]"
+                  disabled={loading}
+                  className={`w-full flex items-center justify-center gap-2 rounded-full py-3 font-semibold transition-all duration-300 
+  ${
+    loading
+      ? "bg-gray-400 cursor-not-allowed"
+      : "bg-yellow-400 hover:bg-yellow-500 hover:scale-[1.02]"
+  }`}
                 >
-                  Create Account
+                  {loading ? (
+                    <>
+                      <Loader2 className="animate-spin" size={18} />
+                      Creating Account...
+                    </>
+                  ) : (
+                    "Create Account"
+                  )}
                 </button>
 
                 {/* Divider */}
@@ -163,7 +176,7 @@ const SubmitHandler = async (e) => {
           <div className="w-full md:w-1/2">
             {/* Image */}
             <img
-              src='/gallery16.jpg'
+              src="/gallery16.jpg"
               className="w-full h-full object-cover"
               alt="banner image"
             />

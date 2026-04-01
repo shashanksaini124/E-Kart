@@ -12,21 +12,38 @@ const verifyEmail = async (token, email) => {
       },
     });
 
+    // ✅ HARDCODE YOUR DOMAIN HERE
+    const link = `https://harviinternational.com/verify/${token}`;
+
     const mailConfigurations = {
       from: process.env.MAIL_USER,
       to: email,
       subject: "Email Verification",
 
-      text: `Hi! There,
+      // ✅ Use HTML for clickable link
+      html: `
+        <h2>Email Verification</h2>
+        <p>Hi there,</p>
+        <p>You recently registered on our website.</p>
+        <p>Click below to verify your email:</p>
 
-You recently registered on our website.
+        <a href="${link}" target="_blank" style="
+          display:inline-block;
+          padding:10px 20px;
+          background-color:#4CAF50;
+          color:white;
+          text-decoration:none;
+          border-radius:5px;
+        ">
+          Verify Email
+        </a>
 
-Please click the link below to verify your email:
+        <p>If button doesn't work, use this link:</p>
+        <p>${link}</p>
 
-process.env/verify/${token}
-
-Thanks,
-E-Kart Team`,
+        <br/>
+        <p>Thanks,<br/>E-Kart Team</p>
+      `,
     };
 
     const info = await transporter.sendMail(mailConfigurations);

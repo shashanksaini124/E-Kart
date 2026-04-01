@@ -78,7 +78,7 @@ const Navbar = () => {
 
         <h1 className="text-5xl  font-sans">
           {/* <b>卄ⲗŕ𝑣𝔦</b> */}
-          <b>H A R V I</b>
+          <b>HARVI</b>
         </h1>
 
         {/* DESKTOP MENU */}
