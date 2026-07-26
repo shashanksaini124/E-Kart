@@ -2,70 +2,42 @@ const nodemailer = require("nodemailer");
 require("dotenv").config();
 
 const verifyEmail = async (token, email) => {
-console.log("MAIL_USER:", process.env.MAIL_USER);
-console.log("MAIL_PASS exists:", !!process.env.MAIL_PASS);
   try {
-    
+    console.log("===== EMAIL DEBUG =====");
+    console.log("MAIL_USER:", process.env.MAIL_USER);
+    console.log("MAIL_PASS exists:", !!process.env.MAIL_PASS);
+    console.log("Recipient:", email);
 
+    const transporter = nodemailer.createTransport({
+      host: "smtp.gmail.com",
+      port: 587,
+      secure: false,
+      auth: {
+        user: process.env.MAIL_USER,
+        pass: process.env.MAIL_PASS,
+      },
+      connectionTimeout: 10000,
+      greetingTimeout: 10000,
+      socketTimeout: 10000,
+    });
 
-
-   const transporter = nodemailer.createTransport({
-  host: "smtp.gmail.com",
-  port: 587,
-  secure: false,
-  auth: {
-    user: process.env.MAIL_USER,
-    pass: process.env.MAIL_PASS,
-  },
-  tls: {
-    rejectUnauthorized: false,
-  },
-});
+    console.log("Verifying SMTP...");
     await transporter.verify();
-    console.log("SMTP Connected");
-    
-    // ✅ HARDCODE YOUR DOMAIN HERE
-    const link = `https://harviinternational.com/verify/${token}`;
+    console.log("✅ SMTP Connected");
 
-    const mailConfigurations = {
+    const info = await transporter.sendMail({
       from: process.env.MAIL_USER,
       to: email,
-      subject: "Email Verification",
+      subject: "Test Email",
+      html: "<h1>Hello from Harvi</h1>",
+    });
 
-      // ✅ Use HTML for clickable link
-      html: `
-        <h2>Email Verification</h2>
-        <p>Hi there,</p>
-        <p>You recently registered on our website.</p>
-        <p>Click below to verify your email:</p>
+    console.log("✅ Email sent");
+    console.log(info);
 
-        <a href="${link}" target="_blank" style="
-          display:inline-block;
-          padding:10px 20px;
-          background-color:#4CAF50;
-          color:white;
-          text-decoration:none;
-          border-radius:5px;
-        ">
-          Verify Email
-        </a>
-
-        <p>If button doesn't work, use this link:</p>
-        <p>${link}</p>
-
-        <br/>
-        <p>Thanks,<br/>E-Kart Team</p>
-      `,
-    };
-
-    const info = await transporter.sendMail(mailConfigurations);
-
-    console.log("✅ Email Sent Successfully");
-    console.log(info.response);
-
-  } catch (error) {
-   console.error("❌ Email Error:");
-   console.error(error);
+  } catch (err) {
+    console.error("EMAIL ERROR:");
+    console.error(err);
   }
 };
 
