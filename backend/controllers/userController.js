@@ -39,7 +39,7 @@ const register = async (req, res) => {
     });
 
     const token = jwt.sign({ id: newUser._id }, process.env.SECRET_KEY ,{ expiresIn: "10m" });
-    await verifyEmail(token, email); // send email here to verify email address
+    verifyEmail(token, email); // send email here to verify email address
     newUser.token = token;
     await newUser.save();
 
