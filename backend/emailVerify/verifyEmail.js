@@ -2,22 +2,28 @@ const nodemailer = require("nodemailer");
 require("dotenv").config();
 
 const verifyEmail = async (token, email) => {
-  console.log("MAIL_USER:", process.env.MAIL_USER);
-console.log("MAIL_PASS:", process.env.MAIL_PASS);
+console.log("MAIL_USER:", process.env.MAIL_USER);
+console.log("MAIL_PASS exists:", !!process.env.MAIL_PASS);
   try {
     
 
 
 
-    const transporter = nodemailer.createTransport({
-      service: "gmail",
-      auth: {
-        user: process.env.MAIL_USER,
-        pass: process.env.MAIL_PASS,
-        
-      },
-    });
-
+   const transporter = nodemailer.createTransport({
+  host: "smtp.gmail.com",
+  port: 587,
+  secure: false,
+  auth: {
+    user: process.env.MAIL_USER,
+    pass: process.env.MAIL_PASS,
+  },
+  tls: {
+    rejectUnauthorized: false,
+  },
+});
+    await transporter.verify();
+    console.log("SMTP Connected");
+    
     // ✅ HARDCODE YOUR DOMAIN HERE
     const link = `https://harviinternational.com/verify/${token}`;
 
@@ -58,7 +64,8 @@ console.log("MAIL_PASS:", process.env.MAIL_PASS);
     console.log(info.response);
 
   } catch (error) {
-    console.log("❌ Email Error:", error);
+   console.error("❌ Email Error:");
+   console.error(error);
   }
 };
 
